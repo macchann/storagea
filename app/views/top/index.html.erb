@@ -20,68 +20,15 @@
   <body>
   <div class="container">
     <h1>New Items</h1>
-    <div class="row">
-        <div class="col-xs-6 col-md-3">
-          <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9201.JPG', alt:"アイテム３" %>
-          </a>
+      <div class="row">
+        <% @items.each do |item| %>
+            <div class="col-xs-6 col-md-3">
+              <a href="#" class="thumbnail">
+              <%= image_tag item.main_image, alt:item.name %>
+              </a>
+            </div>
+        <% end %>
       </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9786.JPG', alt:"アイテム１" %>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9788.JPG', alt:"アイテム２" %>
-        </a>
-      </div>
-              <div class="col-xs-6 col-md-3">
-          <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9827.JPG', alt:"アイテム３" %>
-          </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9829.JPG', alt:"アイテム１" %>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9788.JPG', alt:"アイテム２" %>
-        </a>
-      </div>
-              <div class="col-xs-6 col-md-3">
-          <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9201.JPG', alt:"アイテム３" %>
-          </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9786.JPG', alt:"アイテム１" %>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9788.JPG', alt:"アイテム２" %>
-        </a>
-      </div>
-              <div class="col-xs-6 col-md-3">
-          <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9201.JPG', alt:"アイテム３" %>
-          </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9786.JPG', alt:"アイテム１" %>
-        </a>
-      </div>
-      <div class="col-xs-6 col-md-3">
-        <a href="#" class="thumbnail">
-          <%= image_tag 'IMG_9788.JPG', alt:"アイテム２" %>
-        </a>
-      </div>
-    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
