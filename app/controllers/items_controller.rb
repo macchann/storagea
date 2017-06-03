@@ -20,4 +20,7 @@ class ItemsController < ApplicationController
     @items = @items.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
+  def new
+  end
+
 end

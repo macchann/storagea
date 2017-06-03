@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'top#index'
   get 'items/search' => 'items#search'
     get 'items/result' => 'items#result'
-  resources :items, only: :show
-  resources :users, only: [:show, :new, :create]
+  resources :items, only: [:show, :new, :create]
+  resources :users, only: :show
 
 end
