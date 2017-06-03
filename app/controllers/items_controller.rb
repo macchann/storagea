@@ -8,11 +8,10 @@ class ItemsController < ApplicationController
   end
 
   def result
-    @items = Item.where('name LIKE(?)', "%#{params[:keyword]}%").where(create_params)
+    brand = params.require(:brand_id).permit(:brand_id)
+    @items = Item.all
+    @items = @items.where(brand) unless brand[:brand_id].empty?
+    @items = @items.where('name LIKE(?)', "%#{params[:keyword]}%")
   end
 
-  private
-    def create_params
-    params.require(:brand_id).permit(:brand_id)
-    end
 end
