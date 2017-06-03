@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get 'items/search' => 'items#search'
     get 'items/result' => 'items#result'
   resources :items, only: :show
-  resources :users, only: :show
+  resources :users, only: [:show, :new, :create]
 
 end
