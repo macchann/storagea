@@ -19,8 +19,11 @@
   </head>
   <body>
   <div class="container">
-    <h1>New Items</h1>
-      <div class="row">
+    <h1>Search</h1>
+      <%= render partial: "search" %>
+      <br><br>
+    <h1>Search Results</h1>
+          <div class="row">
         <% @items.each do |item| %>
             <div class="col-xs-6 col-md-3">
               <a href="/items/<%= item.id %>" class="thumbnail">

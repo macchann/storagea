@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,15 +21,24 @@
   </head>
   <body>
   <div class="container">
-    <h1>New Items</h1>
       <div class="row">
-        <% @items.each do |item| %>
-            <div class="col-xs-6 col-md-3">
-              <a href="/items/<%= item.id %>" class="thumbnail">
-              <%= image_tag item.main_image, alt:item.name %>
-              </a>
+        <div class="col-xs-12 col-md-6">
+          <a href="#" class="thumbnail">
+            <%= image_tag @item.main_image, alt:@item.name %>
+          </a>
             </div>
-        <% end %>
+          <div class="col-xs-12 col-md-6">
+            <h1><%= @item.name %></h1>
+            <br />
+            <h3>Brand:</h3>
+            <h2><%= @item.brand.brand %></h2>
+            <br />
+            <h3>Type:</h3>
+            <h2><%= @item.type.type_name %></h2>
+            <br />
+            <h3>Desctiption:</h3>
+            <p><%= @item.description %></p>
+          </div>
       </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

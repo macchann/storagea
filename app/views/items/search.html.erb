@@ -19,16 +19,9 @@
   </head>
   <body>
   <div class="container">
-    <h1>New Items</h1>
-      <div class="row">
-        <% @items.each do |item| %>
-            <div class="col-xs-6 col-md-3">
-              <a href="/items/<%= item.id %>" class="thumbnail">
-              <%= image_tag item.main_image, alt:item.name %>
-              </a>
-            </div>
-        <% end %>
-      </div>
+    <h1>Search</h1>
+      <%= render partial: "search" %>
+      <br><br>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

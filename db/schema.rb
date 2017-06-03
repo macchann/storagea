@@ -11,7 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521074125) do
+ActiveRecord::Schema.define(version: 20170603102528) do
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "brand",      limit: 255
+    t.text     "brand_url",  limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.text     "url",        limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.string   "name",        limit: 255
+    t.integer  "type_id",     limit: 4
+    t.text     "description", limit: 65535
+    t.text     "memo",        limit: 65535
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "image_id",    limit: 4
+    t.text     "main_image",  limit: 65535
+    t.integer  "brand_id",    limit: 4
+    t.integer  "material_id", limit: 4
+    t.integer  "style_id",    limit: 4
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string   "material",   limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.string   "style",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "type_name",  limit: 255
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
