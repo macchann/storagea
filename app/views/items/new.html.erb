@@ -19,9 +19,47 @@
   </head>
   <body>
   <div class="container">
-    <h1>アイテムの登録</h1>
-      
-      
+    <h2>アイテムの登録</h2><br>
+      <div class="col-xs-12 col-md-6">
+        <%= form_for [@item] do |f| %>
+          <div style="margin: 8px 0">
+            <%= f.label :name, style: { 'margin-right' => 8 } %>
+            <%= f.text_field :name, placeholder: 'アイテム名を入力', class: "form-control" %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :brand, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :brand_id, Brand.all, :id, :brand, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :type, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :type_id, Type.all, :id, :type_name, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :style, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :style_id, Style.all, :id, :style, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :material, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :material_id, Material.all, :id, :material, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :image, style: { 'margin-right' => 8 } %>
+            <%= f.file_field :main_image, class: "form-control floating-label", placeholder: "画像アップロード" %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :description, style: { 'margin-right' => 8 } %>
+            <%= f.text_area :description, class: "form-control", placeholder: "アイテム説明" %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :memo, style: { 'margin-right' => 8 } %>
+            <%= f.text_area :memo, class: "form-control", placeholder: "メモ（登録者本人しか見られません）" %>
+          </div>
+            <%= button_tag type: "submit", class: "btn btn-default" do %>
+            登録する<% end %>
+
+        <% end %>
+      </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
