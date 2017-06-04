@@ -24,7 +24,7 @@
         <% @items.each do |item| %>
             <div class="col-xs-6 col-md-3">
               <a href="/items/<%= item.id %>" class="thumbnail">
-              <%= image_tag item.main_image, alt:item.name %>
+              <%= image_tag item.image, alt:item.name %>
               </a>
             </div>
         <% end %>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div class="container">
+    <h2>アイテムの登録</h2><br>
+      <div class="col-xs-12 col-md-6">
+        <%= form_for [@item] do |f| %>
+          <div style="margin: 8px 0">
+            <%= f.label :name, style: { 'margin-right' => 8 } %>
+            <%= f.text_field :name, placeholder: 'アイテム名を入力', class: "form-control" %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :brand, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :brand_id, Brand.all, :id, :brand, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :type, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :type_id, Type.all, :id, :type_name, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :style, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :style_id, Style.all, :id, :style, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :material, style: { 'margin-right' => 8 } %>
+            <%= f.collection_select :material_id, Material.all, :id, :material, {:include_blank => true} ,{:class => "form-control"} %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :image, style: { 'margin-right' => 8 } %>
+            <%= f.file_field :image, class: "form-control floating-label", placeholder: "画像アップロード" %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :description, style: { 'margin-right' => 8 } %>
+            <%= f.text_area :description, class: "form-control", placeholder: "アイテム説明" %>
+          </div>
+          <div style="margin: 8px 0">
+            <%= f.label :memo, style: { 'margin-right' => 8 } %>
+            <%= f.text_area :memo, class: "form-control", placeholder: "メモ（登録者本人しか見られません）" %>
+          </div>
+            <%= button_tag type: "submit", class: "btn btn-default" do %>
+            登録する<% end %>
+
+        <% end %>
+      </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </div>
+  </body>
+</html>

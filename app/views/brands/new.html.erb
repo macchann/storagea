@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-  <!DOCTYPE html>
-<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,25 +19,23 @@
   </head>
   <body>
   <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-6">
-          <a href="#" class="thumbnail">
-            <%= image_tag @item.image, alt:@item.name %>
-          </a>
-            </div>
-          <div class="col-xs-12 col-md-6">
-            <h1><%= @item.name %></h1>
-            <br />
-            <h3>Brand:</h3>
-            <h2><%= @item.brand.brand %></h2>
-            <br />
-            <h3>Type:</h3>
-            <h2><%= @item.type.type_name %></h2>
-            <br />
-            <h3>Desctiption:</h3>
-            <p><%= @item.description %></p>
+    <h2>アイテムの登録</h2><br>
+      <div class="col-xs-12 col-md-6">
+        <%= form_for [@brand] do |f| %>
+          <div style="margin: 8px 0">
+            <%= f.label :brand, style: { 'margin-right' => 8 } %>
+            <%= f.text_field :brand, placeholder: 'ブランド名を入力', class: "form-control" %>
           </div>
+          <div style="margin: 8px 0">
+            <%= f.label :url, style: { 'margin-right' => 8 } %>
+            <%= f.text_field :brand_url, placeholder: 'ウェブサイトのアドレス', class: "form-control" %>
+          </div>
+            <%= button_tag type: "submit", class: "btn btn-default" do %>
+            登録する
+            <% end %>
+        <% end %>
       </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
