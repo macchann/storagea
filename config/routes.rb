@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     get 'items/result' => 'items#result'
   resources :items, only: [:show, :new, :create]
   resources :users, only: :show
-
+  resources :brands, only: [:new, :create]
 end

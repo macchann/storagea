@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
 
   private
     def create_params
-      params.require(:item).permit(:name, :brand_id, :type_id, :style_id, :material_id, :main_image, :description, :memo).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :brand_id, :type_id, :style_id, :material_id, :image, :description, :memo).merge(user_id: current_user.id)
     end
 
 end
