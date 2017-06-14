@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class AvaterUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -46,6 +46,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  process resize_to_fill: [600, 800, "center"]
+  process resize_to_fill: [300, 300, "north"]
 
 end
