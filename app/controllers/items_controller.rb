@@ -28,6 +28,13 @@ class ItemsController < ApplicationController
     @item = Item.create(create_params)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+      if @item.user_id == current_user.id
+        @item.destroy
+      end
+  end
+
   def edit
     @item = Item.find(params[:id])
   end
