@@ -19,10 +19,21 @@
   </head>
   <body>
   <div class="container">
+    <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <a href="#" class="thumbnail">
+      <%= image_tag current_user.avater, alt:current_user.nickname %>
+      </a>
+    </div>
+    <div class="col-xs-6 col-md-4">
+    <h1><%= current_user.nickname %></h1><br />
+    <p><%= current_user.introduction %></p>
+    </div>
+    </div>
+    <div class="row">
     <h1>My Items</h1>
-      <div class="row">
         <% @items.each do |item| %>
-            <div class="col-xs-6 col-md-3">
+            <div class="col-xs-12 col-md-3">
               <a href="/items/<%= item.id %>" class="thumbnail">
               <%= image_tag item.image, alt:item.name %>
               </a>

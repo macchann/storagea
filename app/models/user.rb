@@ -4,5 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  mount_uploader :avater, AvaterUploader
+
+  def full_profile?
+    nickname? && introduction? && avater?
+  end
+
   has_many :items
 end
