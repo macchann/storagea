@@ -34,11 +34,13 @@
             <h2><%= @item.brand.brand %></h2>
             <br />
             <h3>Type:</h3>
-            <h2><%= @item.type.type_name %></h2>
+            <h4><%= @item.type.type_name %></h4>
             <br />
             <h3>Desctiption:</h3>
-            <p><%= @item.description %></p><br />
+            <p><%= @item.description %></p>
               <% if current_user.id == @item.user_id %>
+              <h3>Memo</h3>
+              <p><%= @item.memo %></p><br />
               <%= link_to "編集", edit_item_path(@item.id), class: "btn btn-default" %>
               <%= link_to "削除", "/items/#{@item.id}", class: "btn btn-default", method: :delete, data: {confirm: "本当に削除しますか？"} %>
               <% end %>
