@@ -28,8 +28,23 @@ class ItemsController < ApplicationController
     @item = Item.create(create_params)
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+      if @item.user_id == current_user.id
+        @item.update(update_params)
+      end
+  end
+
   private
     def create_params
+      params.require(:item).permit(:name, :brand_id, :type_id, :style_id, :material_id, :image, :description, :memo).merge(user_id: current_user.id)
+    end
+
+    def update_params
       params.require(:item).permit(:name, :brand_id, :type_id, :style_id, :material_id, :image, :description, :memo).merge(user_id: current_user.id)
     end
 
