@@ -25,33 +25,38 @@
         <div class="col-xs-12 col-md-5">
             <%= image_tag @item.image, alt:@item.name, :class => 'img-responsive ' %>
           </a>
-            </div>
-          <div class="col-xs-12 col-md-7">
-            <h3><%= @item.brand.brand %></h3>
-            <h2><%= @item.name %></h2><br />
-            <h4>Type: <%= @item.type.type_name %></h4><br />
-            <% if user_signed_in? %>
-              <h4>Owner: <%= @item.user.nickname %></h4><br />
-              <h4>Desctiption:</h4>
-              <p><%= @item.description %></p><br />
-                <% if current_user.id == @item.user_id %>
-                <h4>Memo:</h4>
-                <p><%= @item.memo %></p><br />
-                <%= link_to "編集", edit_item_path(@item.id), class: "btn btn-default" %>
-                <%= link_to "削除", "/items/#{@item.id}", class: "btn btn-default", method: :delete, data: {confirm: "本当に削除しますか？"} %>
-                <% end %>
-              <% end %>
-          </div>
         </div>
-          <div class="row">
-            <div class="col-xs 12 col-md-6">
-            <h3>Comments</h3><br />
-            <% @comments.each do |comment| %>
-              <%= image_tag comment.user.avater, alt:comment.user.nickname, :size => '60x60', :align => 'left', :class => 'img-circle', :hspace => '5px' %>
-              <p><%= comment.user.nickname %>: <%= comment.comment %></p><br clear="all">
-              <hr>
+        <div class="col-xs-12 col-md-7">
+          <h3><%= @item.brand.brand %></h3>
+          <h2><%= @item.name %></h2><br />
+          <h4>Type: <%= @item.type.type_name %></h4><br />
+        <% if user_signed_in? %>
+          <h4>Owner: <%= @item.user.nickname %></h4><br />
+          <h4>Desctiption:</h4>
+          <p><%= @item.description %></p><br />
+            <% if current_user.id == @item.user_id %>
+            <h4>Memo:</h4>
+            <p><%= @item.memo %></p><br />
+            <%= link_to "編集", edit_item_path(@item.id), class: "btn btn-default" %>
+            <%= link_to "削除", "/items/#{@item.id}", class: "btn btn-default", method: :delete, data: {confirm: "本当に削除しますか？"} %>
             <% end %>
-            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs 12 col-md-6"><br/>
+          <%= form_for [@item, @comment] do |f| %>
+          <%= f.text_area :comment, class: "form-control", placeholder: "コメントを書く" %>
+          <%= button_tag type: "submit", class: "btn btn-default" do %>
+            登録する<% end %>
+          <% end %>
+          <h3>Comments</h3><br />
+          <% @comments.each do |comment| %>
+            <%= image_tag comment.user.avater, alt:comment.user.nickname, :size => '60x60', :align => 'left', :class => 'img-circle', :hspace => '5px' %>
+            <p><%= comment.user.nickname %>: <%= comment.comment %></p><br clear="all">
+            <hr>
+          <% end %>
+        <% end %>
+        </div>
       </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

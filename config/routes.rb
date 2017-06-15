@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'items/search' => 'items#search'
     get 'items/result' => 'items#result'
   resources :items, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :items do
+    resources :comments, only: [:create]
+  end
   resources :users, only: [:show, :edit, :update]
   resources :brands, only: [:new, :create]
 end
