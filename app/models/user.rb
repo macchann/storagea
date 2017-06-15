@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
   end
 
   has_many :items
+  has_many :comments
 end
