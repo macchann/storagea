@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comments = @item.comments.order('updated_at DESC')
   end
 
   def search

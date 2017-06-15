@@ -8,5 +8,5 @@ class Item < ActiveRecord::Base
   belongs_to :type
   belongs_to :style
   belongs_to :material
-  has_mamnu :comments
+  has_many :comments
 end
