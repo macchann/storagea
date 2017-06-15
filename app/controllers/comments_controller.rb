@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.create(create_params)
+    redirect_to controller: :items, action: :show, id: params[:item_id]
   end
 
   private
