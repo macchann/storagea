@@ -38,7 +38,7 @@
             <h4>Memo:</h4>
             <p><%= @item.memo %></p><br />
             <%= link_to "編集", edit_item_path(@item.id), class: "btn btn-default" %>
-            <%= link_to "削除", "/items/#{@item.id}", class: "btn btn-default", method: :delete, data: {confirm: "本当に削除しますか？"} %>
+            <%= link_to "削除", "/items/#{@item.id}", class: "btn btn-default", method: :delete, data: {confirm: "アイテムを削除しますか？"} %>
             <% end %>
         </div>
       </div>
@@ -52,7 +52,8 @@
           <h3>Comments</h3><br />
           <% @comments.each do |comment| %>
             <%= image_tag comment.user.avater, alt:comment.user.nickname, :size => '60x60', :align => 'left', :class => 'img-circle', :hspace => '5px' %>
-            <p><%= comment.user.nickname %>: <%= comment.comment %></p><br clear="all">
+            <p><%= comment.user.nickname %>: <%= comment.comment %>
+              <% if comment.user.id == current_user.id %><%= link_to '削除', item_comment_path(@item.id, comment.id), method: :delete, data: {confirm: "コメントを削除しますか？"} %><% end %></p><br clear="all">
             <hr>
           <% end %>
         <% end %>
