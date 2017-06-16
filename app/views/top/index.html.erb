@@ -19,23 +19,25 @@
   </head>
   <body>
   <div class="container">
+  <% if user_signed_in? %>
   <% unless current_user.full_profile? %>
      <h2>まずは、あなたのプロフィールを登録しましょう！</h2>
      <%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-default" %>
   </div>
-  <% else %>
+  <% end %>
+  <% end %>
 
     <h1>New Items</h1>
       <div class="row">
         <% @items.each do |item| %>
             <div class="col-xs-6 col-md-3">
-              <a href="/items/<%= item.id %>" class="thumbnail">
-              <%= image_tag item.image, alt:item.name %>
+              <a href="/items/<%= item.id %>">
+              <%= image_tag item.image, alt:item.name, :class => "img-responsive", :vspace => "10px" %>
               </a>
             </div>
         <% end %>
       </div>
-  <% end %>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
