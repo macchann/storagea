@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616122025) do
+ActiveRecord::Schema.define(version: 20170617124529) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "brand",      limit: 255
@@ -57,7 +57,18 @@ ActiveRecord::Schema.define(version: 20170616122025) do
     t.integer  "style_id",        limit: 4
     t.string   "image",           limit: 255
     t.integer  "favorites_count", limit: 4
+    t.integer  "like_count",      limit: 4
   end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4, null: false
+    t.integer  "item_id",    limit: 4, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likes", ["item_id"], name: "fk_rails_00045f60f7", using: :btree
+  add_index "likes", ["user_id"], name: "fk_rails_1e09b5dabf", using: :btree
 
   create_table "materials", force: :cascade do |t|
     t.string   "material",   limit: 255
@@ -102,4 +113,6 @@ ActiveRecord::Schema.define(version: 20170616122025) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "likes", "items"
+  add_foreign_key "likes", "users"
 end

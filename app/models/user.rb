@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
 
   has_many :items
   has_many :comments
+
+  has_many :likes, dependent: :destroy
+  has_many :like_tweets, through: :likes, source: :item
+
 end
