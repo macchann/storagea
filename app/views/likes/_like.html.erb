@@ -5,7 +5,8 @@
    <% end %>
     <% else %>
       <%= link_to like_path(item.id), :id => "like-link-#{item.id}", method: :post, remote: true do %>
-      <button type="button" class="btn btn-default" aria-label="Left Align"><%= image_tag("icon_heart.svg", :size => "16x16")%></span><%= item.like_count %></button>
+      <button type="button" class="btn btn-default" aria-label="Left Align"><%= image_tag("icon_heart.svg", :size => "16x16")%></span>
+      <%= item.like_count %></button>
     <% end %>
   <% end %>
 <% end %>

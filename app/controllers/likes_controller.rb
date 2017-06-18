@@ -4,11 +4,13 @@ class LikesController < ApplicationController
   def like
     like = current_user.likes.new(item_id: @item.id)
     like.save
+    @item = Item.find(@item.id)
   end
 
   def unlike
     like = current_user.likes.find_by(item_id: @item.id)
     like.destroy
+        @item = Item.find(@item.id)
   end
 
   private
