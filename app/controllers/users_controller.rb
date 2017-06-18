@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @items = current_user.items.order("rand()")
+    @items = current_user.items.order("rand()").page(params[:page]).per(12)
   end
 
   def edit
@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   end
 
   def favorite
-  favorite = current_user.likes.order('updated_at DESC')
+  favorite = current_user.likes
   favorite_ids = favorite.pluck(:item_id)
-  @items = favorite_ids.map{ |id| Item.find(id) }
+  @items = Item.where(id: favorite_ids).page(params[:page]).per(12).order("updated_at DESC")
   end
 
   private

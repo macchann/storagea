@@ -31,14 +31,7 @@
     </div>
     <div class="row">
     <h1>My Items</h1>
-        <% @items.each do |item| %>
-            <div class="col-xs-6 col-md-3">
-              <a href="/items/<%= item.id %>">
-              <%= image_tag item.image, alt:item.name, :class => "img-responsive", :vspace => "10px" %>
-              </a>
-            </div>
-        <% end %>
-      </div>
+    <%= render partial: "/users/items", locals: { items: @items } %>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
