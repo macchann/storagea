@@ -34,6 +34,7 @@
               <a href="/items/<%= item.id %>">
               <%= image_tag item.image, alt:item.name, :class => "img-responsive", :vspace => "10px" %>
               </a>
+                <%= render partial: "/likes/like", locals: {item: item} %>
             </div>
         <% end %>
       </div>

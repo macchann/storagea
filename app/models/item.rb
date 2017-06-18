@@ -9,4 +9,7 @@ class Item < ActiveRecord::Base
   belongs_to :style
   belongs_to :material
   has_many :comments
+
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user
 end
