@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     @items = @items.where(types) unless types[:type_id].empty?
     @items = @items.where(style) unless style[:style_id].empty?
     @items = @items.where(material) unless material[:material_id].empty?
-    @items = @items.where('name LIKE(?)', "%#{params[:keyword]}%")
+    @items = @items.where('name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(12)
   end
 
   def new
