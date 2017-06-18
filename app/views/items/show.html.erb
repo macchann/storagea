@@ -44,6 +44,7 @@
       </div>
       <div class="row">
         <div class="col-xs 12 col-md-6"><br/>
+
           <%= form_for [@item, @comment] do |f| %>
           <%= f.text_area :comment, class: "form-control", placeholder: "コメントを書く" %>
           <%= button_tag type: "submit", class: "btn btn-default" do %>
