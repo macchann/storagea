@@ -31,7 +31,7 @@
           <h2><%= @item.name %></h2><br />
           <h4>Type: <%= @item.type.type_name %></h4><br />
         <% if user_signed_in? %>
-          <h4>Owner: <%= @item.user.nickname %></h4><br />
+          <h4>Owner: <%= link_to @item.user.nickname, user_path(@item.user_id) %></h4><br />
           <h4>Desctiption:</h4>
           <p><%= @item.description %></p><br />
             <% if current_user.id == @item.user_id %>

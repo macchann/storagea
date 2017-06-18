@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @items = current_user.items.order("rand()").page(params[:page]).per(12)
+    @items = Item.where(user_id: params[:id]).order("rand()").page(params[:page]).per(12)
+    @user = User.find_by(id: params[:id])
   end
 
   def edit
