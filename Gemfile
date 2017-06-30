@@ -52,3 +52,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
 gem 'bootstrap-sass'
+
+group :production do
+  gem 'rails_12factor'
+end
