@@ -1,0 +1,10 @@
+      <%= form_tag('/items/resultm', method: :get, class: 'navbar-form navbar-left') do %>
+          <%= collection_select(:brand_id, :brand_id, Brand.all , :id, :brand, {:prompt => "Brands"}, {:class => "form-control"} ) %>
+          <%= collection_select(:type_id, :type_id, Type.all , :id, :type_name, {:prompt => "Types"}, {:class => "form-control"} ) %>
+          <%= collection_select(:style_id, :style_id, Style.all , :id, :style, {:prompt => "Style"}, {:class => "form-control"} ) %>
+          <%= collection_select(:material_id, :material_id, Material.all , :id, :material, {:prompt => "Material"}, {:class => "form-control"} ) %>
+          <div class="form-group">
+            <input type="text" class="form-control" name="keyword" placeholder="アイテム名" value="">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+      <% end %>

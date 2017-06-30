@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'top#index'
   get 'items/search' => 'items#search'
-    get 'items/result' => 'items#result'
+  get 'items/result' => 'items#result'
+  get 'items/searchm' => 'items#searchm'
+  get 'items/resultm' => 'items#resultm'
   resources :items, only: [:show, :new, :create, :edit, :update, :destroy]
   resources :items do
     resources :comments, only: [:create, :destroy]

@@ -22,6 +22,19 @@ class ItemsController < ApplicationController
     @items = @items.where('name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(12)
   end
 
+  def resultm
+    brand = params.require(:brand_id).permit(:brand_id)
+    types = params.require(:type_id).permit(:type_id)
+    style = params.require(:style_id).permit(:style_id)
+    material = params.require(:material_id).permit(:material_id)
+    @items = current_user.items
+    @items = @items.where(brand) unless brand[:brand_id].empty?
+    @items = @items.where(types) unless types[:type_id].empty?
+    @items = @items.where(style) unless style[:style_id].empty?
+    @items = @items.where(material) unless material[:material_id].empty?
+    @items = @items.where('name LIKE(?)', "%#{params[:keyword]}%").page(params[:page]).per(12)
+  end
+
   def new
     @item = Item.new
   end
